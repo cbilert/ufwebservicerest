@@ -1,4 +1,4 @@
 # Procfile
 #web: java -jar target/UFWebServiceRest.jar
-web: java $JAVA_OPTS -jar target/UFWebServiceRest.jar --port $PORT target/*.war
+java $JAVA_OPTS -jar target/UFWebServiceRest.jar --server.port=$PORT $JAR_OPTS
 
