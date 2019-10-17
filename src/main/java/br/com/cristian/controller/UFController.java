@@ -62,7 +62,7 @@ public class UFController {
 	 * */
 	@GET
 	@Produces("application/json; charset=UTF-8")
-	@Path("/todasUF")
+	@Path("/listar")
 	public List<UnidadeFederativa> listaTudo(){
 		try{
 			return repository.listaTudo();
