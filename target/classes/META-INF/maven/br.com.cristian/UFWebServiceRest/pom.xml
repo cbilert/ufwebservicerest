@@ -85,10 +85,7 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.4.1212</version>
 		</dependency>
-
-
 	</dependencies>
-
 	<build>
 		<finalName>UFWebServiceRest</finalName>
 		<plugins>
@@ -103,3 +100,4 @@
 	</build>
 
 </project>
+

@@ -10,6 +10,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
 import br.com.cristian.model.UF;
 import br.com.cristian.model.UnidadeFederativa;
 import br.com.cristian.repository.UnidadeFederativaRepository;
@@ -26,8 +28,8 @@ public class UFController {
 	 * Esse m�todo cadastra uma nova UF
 	 * */
 	@POST
-	@Consumes("application/json; charset=UTF-8")
-	@Produces("application/json; charset=UTF-8")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/cadastrar")
 	public String cadastrar(UF uf){
 		try {
@@ -45,8 +47,8 @@ public class UFController {
 	 * Essse m�todo altera uma uf j� cadastrada
 	 * **/
 	@PUT
-	@Produces("application/json; charset=UTF-8")
-	@Consumes("application/json; charset=UTF-8")	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)	
 	@Path("/alterar")
 	public String alterar(UnidadeFederativa uf){
 		try {
@@ -61,7 +63,7 @@ public class UFController {
 	 * Esse m�todo lista todas uf cadastradas na base
 	 * */
 	@GET
-	@Produces("application/json; charset=UTF-8")
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/listar")
 	public List<UnidadeFederativa> listaTudo(){
 		try{
@@ -76,7 +78,7 @@ public class UFController {
 	 * Esse m�todo busca uma pessoa cadastrada pelo c�digo
 	 * */
 	@GET
-	@Produces("application/json; charset=UTF-8")
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getPessoa/{codigo}")
 	public UnidadeFederativa getUF(@PathParam("sigla") String sigla){
 		try {
@@ -90,7 +92,7 @@ public class UFController {
 	 * Excluindo uma pessoa pelo c�digo
 	 * */
 	@DELETE
-	@Produces("application/json; charset=UTF-8")
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/excluir/{codigo}")	
 	public String excluir(@PathParam("sigla") String sigla){
 		try {
