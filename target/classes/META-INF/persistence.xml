@@ -15,9 +15,9 @@
 <!--          <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/db_celk_uf"/> -->
 <!--          <property name="javax.persistence.jdbc.user" value="postgres"/> -->
 <!--          <property name="javax.persistence.jdbc.password" value="postgres"/> -->
-		 <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-184-73-232-93.compute-1.amazonaws.com:5432/d3peblsqemfktu"/>
-         <property name="javax.persistence.jdbc.user" value="eridekqcdycflm"/>
-         <property name="javax.persistence.jdbc.password" value="72197a05cb30ca85c84f6fdfc191e96024ff4570bfd67f1a081de61274911c2e"/>
+		 <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-163-235-56.compute-1.amazonaws.com:5432/da979mhr27m0b3"/>
+         <property name="javax.persistence.jdbc.user" value="jpnnpdukzfsjil"/>
+         <property name="javax.persistence.jdbc.password" value="25ebee5e4a314bd9c45c0595d275a44eb0008ce0ce8649be8884f7dcec647ad2"/>
          <property name="hibernate.hbm2ddl.auto" value="create"/>
       </properties>
    </persistence-unit>
