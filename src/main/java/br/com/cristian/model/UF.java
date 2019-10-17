@@ -9,7 +9,6 @@ public class UF {
 	private String nomeUF;
 	
 	public UF() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public UF(String sigla, String nomeUF) {
