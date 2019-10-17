@@ -18,7 +18,7 @@
 		 <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-225-115-177.compute-1.amazonaws.com:5432/dcnd8oeskou26k"/>
          <property name="javax.persistence.jdbc.user" value="ujbwgskepbfgzs"/>
          <property name="javax.persistence.jdbc.password" value="fe380e00df986d8fddf5cdf0f08c3312095892e7925a5de6b812c50366695ef5"/>
-         <property name="hibernate.hbm2ddl.auto" value="update"/>
+         <property name="hibernate.hbm2ddl.auto" value="create"/>
       </properties>
    </persistence-unit>
 </persistence> 
