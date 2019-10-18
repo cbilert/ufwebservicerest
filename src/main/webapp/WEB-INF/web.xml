@@ -20,7 +20,8 @@
 		<filter-name>CorsFilter</filter-name>
 		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
 		<init-param>
-			<param-name>cors.allowed.origins</param-name>
+<!-- 			<param-name>cors.allowed.origins</param-name> -->
+            <param-name>cors.allowOrigin</param-name>
 			<param-value>https://cruduf.herokuapp.com/#!/tela-uf</param-value>
 <!-- 			<param-value>*</param-value> -->
 		</init-param>
