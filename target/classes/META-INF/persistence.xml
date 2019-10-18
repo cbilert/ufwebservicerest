@@ -12,9 +12,18 @@
       <properties>
          <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
          <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+<!-- 		 LOCALHOST -->
+<!-- 		 <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/db_celk_uf"/> -->
+<!--          <property name="javax.persistence.jdbc.user" value="postgres"/> -->
+<!--          <property name="javax.persistence.jdbc.password" value="postgres"/> -->
+
+         
+<!--          ELEPHANT SERVER -->
          <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://tuffi.db.elephantsql.com:5432/jwygltqh"/>
          <property name="javax.persistence.jdbc.user" value="jwygltqh"/>
          <property name="javax.persistence.jdbc.password" value="lrSzbSy8PojgpwZDagPAs8yRzfdaksn5"/>
+
+<!-- 			  HEROKU SERVER -->
 <!-- 		 <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-225-115-177.compute-1.amazonaws.com:5432/dcnd8oeskou26k"/> -->
 <!--          <property name="javax.persistence.jdbc.user" value="ujbwgskepbfgzs"/> -->
 <!--          <property name="javax.persistence.jdbc.password" value="fe380e00df986d8fddf5cdf0f08c3312095892e7925a5de6b812c50366695ef5"/> -->

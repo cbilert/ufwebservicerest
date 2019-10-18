@@ -1,5 +1,6 @@
 package br.com.cristian.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -11,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import br.com.cristian.model.UF;
 import br.com.cristian.model.UnidadeFederativa;
@@ -31,15 +34,19 @@ public class UFController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/cadastrar")
-	public String cadastrar(UF uf){
+	public Response cadastrar(UF uf){
 		try {
-			UnidadeFederativa unidadeFederativa = new UnidadeFederativa(uf.getSigla(),uf.getNomeUF());
+			UnidadeFederativa unidadeFederativa = new UnidadeFederativa(uf.getSigla().toUpperCase(), uf.getNomeUF());
 			unidadeFederativa.validate();
 			repository.salvar(unidadeFederativa);
-			return "Registro cadastrado com sucesso!";
+			return Response.status(Status.CREATED.getStatusCode())
+					.entity("{\"result\":\"Registro cadastrado com sucesso!\"}")
+					.build();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "Erro ao salvar registro! "+e.getMessage();
+			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode())
+					.entity("{\"result\":\"Erro ao salvar registro! "+e.getMessage()+"\"}")
+					.build();
 		}
 	}
  
@@ -47,15 +54,19 @@ public class UFController {
 	 * Essse m�todo altera uma uf j� cadastrada
 	 * **/
 	@PUT
-	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)	
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/alterar")
-	public String alterar(UnidadeFederativa uf){
+	public Response alterar(UnidadeFederativa uf){
 		try {
 			repository.alterar(uf);
-			return "Registro alterado com sucesso!";
+			return Response.status(Status.CREATED.getStatusCode())
+					.entity("{\"result\":\"Registro alterado com sucesso!\"}")
+					.build();
 		} catch (Exception e) {
-			return "Erro ao alterar o registro " + e.getMessage();
+			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode())
+					.entity("{\"result\":\"Erro ao alterar registro! "+e.getMessage()+"\"}")
+					.build();
 		}
  
 	}
@@ -67,39 +78,31 @@ public class UFController {
 	@Path("/listar")
 	public List<UnidadeFederativa> listaTudo(){
 		try{
-			return repository.listaTudo();
+			List<UnidadeFederativa> retorno = new ArrayList<UnidadeFederativa>();
+			retorno = repository.listaTudo();
+			return retorno;
 		}catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			return new ArrayList<UnidadeFederativa>();
 		}
 	}
  
 	/**
-	 * Esse m�todo busca uma pessoa cadastrada pelo c�digo
-	 * */
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/getPessoa/{codigo}")
-	public UnidadeFederativa getUF(@PathParam("sigla") String sigla){
-		try {
-			return repository.getUF(sigla);
-		}catch (Exception e) {
-			return null;
-		}
-	}
- 
-	/**
-	 * Excluindo uma pessoa pelo c�digo
+	 * Excluindo uma UF pelo  código
 	 * */
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/excluir/{codigo}")	
-	public String excluir(@PathParam("sigla") String sigla){
+	@Path("/excluir/{sigla}")
+	public Response  excluir(@PathParam("sigla") String sigla){
 		try {
 			repository.excluir(sigla);
-			return "Registro excluido com sucesso!";
+			return Response.status(Status.CREATED.getStatusCode())
+					.entity("{\"result\":\"Registro removido com sucesso!\"}")
+					.build();
 		} catch (Exception e) {
-			return "Erro ao excluir o registro! " + e.getMessage();
+			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode())
+					.entity("{\"result\":\"Erro ao excluir registro! "+e.getMessage()+"\"}")
+					.build();
 		}
  
 	}
