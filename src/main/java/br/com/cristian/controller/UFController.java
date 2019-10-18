@@ -39,11 +39,13 @@ public class UFController {
 			UnidadeFederativa unidadeFederativa = new UnidadeFederativa(uf.getSigla().toUpperCase(), uf.getNomeUF());
 			unidadeFederativa.validate();
 			repository.salvar(unidadeFederativa);
+			System.out.println("cadastrado");
 			return Response.status(Status.CREATED.getStatusCode())
 					.entity("{\"result\":\"Registro cadastrado com sucesso!\"}")
 					.build();
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("nao cadastrado");
 			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode())
 					.entity("{\"result\":\"Erro ao salvar registro! "+e.getMessage()+"\"}")
 					.build();
@@ -60,10 +62,12 @@ public class UFController {
 	public Response alterar(UnidadeFederativa uf){
 		try {
 			repository.alterar(uf);
+			System.out.println("alterado");
 			return Response.status(Status.CREATED.getStatusCode())
 					.entity("{\"result\":\"Registro alterado com sucesso!\"}")
 					.build();
 		} catch (Exception e) {
+			System.out.println("nao alterado");
 			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode())
 					.entity("{\"result\":\"Erro ao alterar registro! "+e.getMessage()+"\"}")
 					.build();
@@ -80,9 +84,11 @@ public class UFController {
 		try{
 			List<UnidadeFederativa> retorno = new ArrayList<UnidadeFederativa>();
 			retorno = repository.listaTudo();
+			System.out.println("listado");
 			return retorno;
 		}catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("nao listado");
 			return new ArrayList<UnidadeFederativa>();
 		}
 	}
@@ -96,14 +102,15 @@ public class UFController {
 	public Response  excluir(@PathParam("sigla") String sigla){
 		try {
 			repository.excluir(sigla);
+			System.out.println("removido");
 			return Response.status(Status.CREATED.getStatusCode())
 					.entity("{\"result\":\"Registro removido com sucesso!\"}")
 					.build();
 		} catch (Exception e) {
+			System.out.println("nao removido");
 			return Response.status(Status.INTERNAL_SERVER_ERROR.getStatusCode())
 					.entity("{\"result\":\"Erro ao excluir registro! "+e.getMessage()+"\"}")
 					.build();
 		}
- 
 	}
 }
